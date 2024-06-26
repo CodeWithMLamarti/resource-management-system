@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -32,6 +33,10 @@ public class User {
 
     @Column(name = "phone")
     private String phone;
+
+    @Column(name = "break")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Break> breaks;
 
     @ManyToMany
     @JoinTable(
