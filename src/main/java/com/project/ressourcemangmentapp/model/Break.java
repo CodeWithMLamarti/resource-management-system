@@ -29,11 +29,11 @@ public class Break {
     private String reason;
 
     @Column(name = "status")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
 
     @Column(name = "break_type")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private BreakType breakType;
 
     @ManyToOne
