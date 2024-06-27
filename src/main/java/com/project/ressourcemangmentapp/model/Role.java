@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -18,7 +19,7 @@ public class Role {
 
     @Column(name = "name")
     private String name;
-    @ManyToMany(mappedBy = "roles")
-    private Collection<User> users;
+    @OneToMany(mappedBy = "role")
+    private Set<User> users;
 
 }

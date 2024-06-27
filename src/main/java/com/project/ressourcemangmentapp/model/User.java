@@ -34,17 +34,15 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "job")
+    private String job;
+
     @Column(name = "break")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Break> breaks;
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    @ManyToOne
+    @JoinTable(name = "id_role")
+    private Role role;
 
 }

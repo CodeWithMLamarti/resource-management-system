@@ -1,5 +1,6 @@
 package com.project.ressourcemangmentapp.model;
 
+import com.project.ressourcemangmentapp.utils.BreakType;
 import com.project.ressourcemangmentapp.utils.Status;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -28,7 +29,12 @@ public class Break {
     private String reason;
 
     @Column(name = "status")
+    @Enumerated(EnumType.ORDINAL)
     private Status status = Status.PENDING;
+
+    @Column(name = "break_type")
+    @Enumerated(EnumType.ORDINAL)
+    private BreakType breakType;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
