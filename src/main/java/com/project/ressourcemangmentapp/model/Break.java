@@ -28,6 +28,9 @@ public class Break {
     @Column(name = "reason")
     private String reason;
 
+    @Column(name = "balance")
+    private int balance;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;

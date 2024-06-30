@@ -43,14 +43,14 @@ public class AuthService {
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
 
-/*
+
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword()
                 )
         );
- */
+
         System.out.println(request.getPassword());
         var user = userRepository.getUserByEmail(request.getEmail())
                 .orElseThrow();
@@ -58,6 +58,7 @@ public class AuthService {
         return AuthenticationResponse
                 .builder()
                 .token(jwt)
+                .role(user.getRole().name())
                 .build();
     }
 }
