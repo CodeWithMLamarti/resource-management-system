@@ -43,6 +43,9 @@ public class User implements UserDetails {
     @Column(name = "job")
     private String job;
 
+    @Column(name = "balance")
+    private int balance = 30;
+
     @Column(name = "break")
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Break> breaks;

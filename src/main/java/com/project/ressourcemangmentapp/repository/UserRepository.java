@@ -12,11 +12,11 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> getUserByEmail(String email);
-    Optional<User> getUserById(Long id);
+    Optional<UserDto> getUserById(Long id);
+    Optional<User> findUserById(Long id);
+
     void deleteUserById(Long id);
-    @Query("SELECT new com.project.ressourcemangmentapp.model.dto.UserDto(u.id, u.firstName, u.lastName, u.serialNumber, u.job, u.role) FROM User u")
+    @Query("SELECT new com.project.ressourcemangmentapp.model.dto.UserDto(u.id, u.firstName, u.lastName, u.serialNumber, u.balance, u.email, u.phone, u.job, u.role) FROM User u")
     List<UserDto> findAllUsersWithoutPassword();
-
-
 
 }

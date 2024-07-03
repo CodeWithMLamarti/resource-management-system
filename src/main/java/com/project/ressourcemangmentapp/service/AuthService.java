@@ -29,6 +29,7 @@ public class AuthService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setSerialNumber(request.getSerialNumber());
         user.setEmail(request.getEmail());
+        user.setPhone(request.getPhone());
         user.setJob(request.getJob());
         user.setBreaks(null);
         user.setRole(Role.valueOf(request.getRole()));
@@ -59,6 +60,7 @@ public class AuthService {
                 .builder()
                 .token(jwt)
                 .role(user.getRole().name())
+                .id(user.getId())
                 .build();
     }
 }

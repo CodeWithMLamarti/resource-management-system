@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/auth/**").permitAll()  // Allow public access to authentication endpoints
                         .requestMatchers("/api/v1/users/**").permitAll() // Allow public access to user endpoints
+                        .requestMatchers("/api/v1/breaks/**").permitAll() // Allow public access to user endpoints
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -49,7 +50,7 @@ public class SecurityConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200/")
+                        .allowedOrigins("http://localhost:4200")
                         .allowedMethods(
                                 HttpMethod.GET.name(),
                                 HttpMethod.POST.name(),
