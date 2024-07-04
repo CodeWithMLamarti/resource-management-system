@@ -50,6 +50,10 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Break> breaks;
 
+    @Column(name = "docs")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Docs> docs;
+
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;

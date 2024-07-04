@@ -7,6 +7,7 @@ import com.project.ressourcemangmentapp.model.dto.UserUpdateDto;
 import com.project.ressourcemangmentapp.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
@@ -22,6 +23,7 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ModelMapper modelMapper;
     public List<UserDto> getAllUsers() {
         return userRepository.findAllUsersWithoutPassword();
     }
@@ -33,7 +35,7 @@ public class UserService {
     }
 
     public UserDto getUser(Long id) {
-        return userRepository.getUserById(id).get();
+        return modelMapper.map(userRepository.findById(id).get(), UserDto.class) ;
     }
     public User findByEmail(String email) {
         return userRepository.getUserByEmail(email).get();

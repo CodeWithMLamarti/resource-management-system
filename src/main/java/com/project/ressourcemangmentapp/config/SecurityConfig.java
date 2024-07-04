@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/**").permitAll()  // Allow public access to authentication endpoints
                         .requestMatchers("/api/v1/users/**").permitAll() // Allow public access to user endpoints
                         .requestMatchers("/api/v1/breaks/**").permitAll() // Allow public access to user endpoints
+                        .requestMatchers("/api/v1/docs/**").permitAll() // Allow public access to user endpoints
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
